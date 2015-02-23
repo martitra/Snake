@@ -1,7 +1,6 @@
 package com.mygdx.game.controlador;
 
 import com.badlogic.gdx.math.Intersector;
-//import com.mygdx.game.Audio;
 import com.mygdx.game.modelo.Serpiente;
 import com.mygdx.game.modelo.Controis;
 import com.mygdx.game.modelo.Mundo;
