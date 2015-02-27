@@ -19,7 +19,9 @@ public abstract class Personaxe {
     private Rectangle rectangulo;
 
     public Personaxe(Vector2 posicion, Vector2 tamano) {
-        rectangulo = new Rectangle();
+        this.posicion = posicion;
+        this.tamano = tamano;
+        rectangulo = new Rectangle(posicion.x,posicion.y, tamano.x,tamano.y);
     }
 
     /**
