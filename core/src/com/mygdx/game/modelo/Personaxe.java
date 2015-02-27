@@ -18,7 +18,7 @@ public abstract class Personaxe {
     protected Vector2 tamano;
     private Rectangle rectangulo;
 
-    public Personaxe() {
+    public Personaxe(Vector2 posicion, Vector2 tamano) {
         rectangulo = new Rectangle();
     }
 
