@@ -63,8 +63,8 @@ public class ControladorXogo {
         serpiente = meuMundo.getSerpiente();
     }
 
-    private void controladorManzana(float delta){
-        meuMundo.getManzana().update(delta);
+    private void controladorManzana(){
+        meuMundo.getManzana().update();
     }
 
     private void controladorSerpiente(float delta){
@@ -106,7 +106,7 @@ public class ControladorXogo {
     }
 
     public void update(float delta){
-        controladorManzana(delta);
+        controladorManzana();
         controladorSerpiente(delta);
         procesarEntradas();
     }

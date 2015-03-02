@@ -3,6 +3,8 @@ package com.mygdx.game.modelo;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
+import java.util.ArrayList;
+
 /**
  * Created by dam201 on 22/01/2015 13:12.
  */
