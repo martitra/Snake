@@ -61,13 +61,13 @@ public class PantallaMarcadores implements Screen, InputProcessor {
         this.pantallaXogo = pantallaXogo;
 
         Serpiente serpiente = pantallaXogo.getMundo().getSerpiente();
-        Integer numvidasSalvadasXogo = serpiente.getNumVidasSalvadas();
-        if (numvidasSalvadasXogo > numVidasSalvadas){
-            numVidasSalvadas = numvidasSalvadasXogo;
-            preferences.putInteger("vidas_salvadas",numVidasSalvadas);
-            preferences.flush();//para actualizar
-            vidasSalvadas = vidasSalvadas.concat("Nuevo Record!! ");
-        }
+        //Integer numvidasSalvadasXogo = serpiente.getNumVidasSalvadas();
+        //if (numvidasSalvadasXogo > numVidasSalvadas){
+        //    numVidasSalvadas = numvidasSalvadasXogo;
+        //    preferences.putInteger("vidas_salvadas",numVidasSalvadas);
+        //    preferences.flush();//para actualizar
+        //   vidasSalvadas = vidasSalvadas.concat("Nuevo Record!! ");
+        //}
         vidasSalvadas = vidasSalvadas.concat(String.valueOf(numVidasSalvadas));
         //vidasSalvadas = "Vidas Salvadas: "+String.valueOf(alien.getNumVidasSalvadas());
         //vidasMortas = "Vidas Mortas: "+String.valueOf(alien.getNumVidasMortas());

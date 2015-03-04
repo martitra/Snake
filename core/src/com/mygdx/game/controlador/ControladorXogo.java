@@ -99,9 +99,9 @@ public class ControladorXogo {
             Cando o alien chega a nave, sálvase e inicializamos
         */
         if (Intersector.overlaps(meuMundo.getManzana().getRectangulo(), serpiente.getRectangulo())){
-            serpiente.setNumVidas(Serpiente.TIPOS_VIDA.SALVADO);
+            //serpiente.setNumVidas(Serpiente.TIPOS_VIDA.SALVADO);
             //Audio.transporter_sfx.play();
-            serpiente.inicializarAlien();
+            //serpiente.inicializarAlien();
         }
     }
 

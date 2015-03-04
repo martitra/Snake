@@ -20,9 +20,10 @@ public class Serpiente extends Personaxe {
         velocidade = new Vector2(0,0);
         setVelocidade_montado(0);
         getRectangulo().setSize(tamano.x/2);
+        this.anel = aneis;
     }
 
-    public void inicializarAlien() {
+    public void inicializarSnake() {
         setPosicion(100, 20);
         setVelocidade_montado(0);
         setVelocidadeX(0);

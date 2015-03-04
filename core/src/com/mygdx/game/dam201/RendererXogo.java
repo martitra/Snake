@@ -64,11 +64,11 @@ public class RendererXogo implements InputProcessor {
     private void debuxarControis(){
 
         // fondo negro
-        spriteBatch.draw(AssetsXogo.texturePuntoNegro,
-                Controis.FONDO_NEGRO.x,
-                Controis.FONDO_NEGRO.y,
-                Controis.FONDO_NEGRO.width,
-                Controis.FONDO_NEGRO.height);
+        //spriteBatch.draw(AssetsXogo.texturePuntoNegro,
+        //        Controis.FONDO_NEGRO.x,
+        //        Controis.FONDO_NEGRO.y,
+        //        Controis.FONDO_NEGRO.width,
+        //        Controis.FONDO_NEGRO.height);
 
         //Control direccion
         spriteBatch.draw(AssetsXogo.textureControisFrechas,
@@ -99,31 +99,31 @@ public class RendererXogo implements InputProcessor {
                 serpiente.getTamano().y);
     }
 
-    private void debuxarNave(){
-        spriteBatch.draw(AssetsXogo.textureNave, manzana.getPosicion().x,
-                manzana.getPosicion().y, manzana.getTamano().x, manzana.getTamano().y);
-    }
+    //private void debuxarNave(){
+    //    spriteBatch.draw(AssetsXogo.textureNave, manzana.getPosicion().x,
+    //            manzana.getPosicion().y, manzana.getTamano().x, manzana.getTamano().y);
+    //}
 
     private void debuxarFondo(){
         spriteBatch.draw(AssetsXogo.textureFondo, 0,0,
                 Mundo.TAMANO_MUNDO_ANCHO, Mundo.TAMANO_MUNDO_ALTO);
     }
 
-    private void debuxarVidas() {
-        Texture textura;
-        int posX = Controis.POSVIDAS;
-        for (Serpiente.TIPOS_VIDA vida : meuMundo.getSerpiente().getNumVidas()){
-            if (vida == Serpiente.TIPOS_VIDA.MUERTO){
-                textura = AssetsXogo.textureAlienDead;
-            } else if (vida == Serpiente.TIPOS_VIDA.SALVADO){
-                textura = AssetsXogo.textureAlienRescue;
-            } else{
-                textura = AssetsXogo.textureSnake;
-            }
-            spriteBatch.draw(textura, posX, 0, 10, 10);
-            posX += 12;
-        }
-    }
+//    private void debuxarVidas() {
+//        Texture textura;
+//        int posX = Controis.POSVIDAS;
+//        for (Serpiente.TIPOS_VIDA vida : meuMundo.getSerpiente().getNumVidas()){
+//            if (vida == Serpiente.TIPOS_VIDA.MUERTO){
+//                textura = AssetsXogo.textureAlienDead;
+//            } else if (vida == Serpiente.TIPOS_VIDA.SALVADO){
+//                textura = AssetsXogo.textureAlienRescue;
+//            } else{
+//                textura = AssetsXogo.textureSnake;
+//            }
+//            spriteBatch.draw(textura, posX, 0, 10, 10);
+//            posX += 12;
+//        }
+//    }
 
 
     /**

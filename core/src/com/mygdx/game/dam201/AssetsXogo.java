@@ -39,7 +39,6 @@ public class AssetsXogo {
 	public static void liberarTexturas() {
 		textureSnake.dispose();
         textureManzana.dispose();
-		textureFondo.dispose();
 		textureControisFrechas.dispose();
 
 	}
