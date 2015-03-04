@@ -93,8 +93,8 @@ public class RendererXogo implements InputProcessor {
 
     }
 
-    private void debuxarAlien(){
-        spriteBatch.draw(AssetsXogo.textureAlien, serpiente.getPosicion().x,
+    private void debuxarSnake(){
+        spriteBatch.draw(AssetsXogo.textureSnake, serpiente.getPosicion().x,
                 serpiente.getPosicion().y, serpiente.getTamano().x,
                 serpiente.getTamano().y);
     }
@@ -118,7 +118,7 @@ public class RendererXogo implements InputProcessor {
             } else if (vida == Serpiente.TIPOS_VIDA.SALVADO){
                 textura = AssetsXogo.textureAlienRescue;
             } else{
-                textura = AssetsXogo.textureAlien;
+                textura = AssetsXogo.textureSnake;
             }
             spriteBatch.draw(textura, posX, 0, 10, 10);
             posX += 12;
@@ -131,18 +131,18 @@ public class RendererXogo implements InputProcessor {
      * @param delta
      */
 	public void render(float delta){
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(171/255f, 203/255f, 153/255f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		spriteBatch.begin();//entre begin e end todos os metodos de dibujo
 		//spriteBatch.draw(AssetsXogo.textureAlien, temporal.x,temporal.y,15,15);
 
-        debuxarFondo();
+        //debuxarFondo();
 
-        debuxarNave();
-        debuxarAlien();//poñer o serpiente aquí para que se superpoña por encima do mundo
-        debuxarControis();
-        debuxarVidas();
+        //debuxarNave();
+        debuxarSnake();//poñer o serpiente aquí para que se superpoña por encima do mundo
+        //debuxarControis();
+        //debuxarVidas();
        // spriteBatch.setColor(Color.YELLOW);
         //spriteBatch.draw(AssetsXogo.textureAlien,100,100,15,15);
 

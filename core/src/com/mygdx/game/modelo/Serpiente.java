@@ -12,54 +12,14 @@ public class Serpiente extends Personaxe {
 
     private Vector2 velocidade;
     private float velocidadeMontado;
+    private Array anel;
 
-    public static enum TIPOS_VIDA{
-        INICIAL, SALVADO, MUERTO
-    };
-
-    private Array<TIPOS_VIDA> numVidas;
-
-    public Serpiente(Vector2 posicion, Vector2 tamano, float velocidade_max){
+    public Serpiente(Vector2 posicion, Vector2 tamano, float velocidade_max, Array aneis){
         super(posicion, tamano, velocidade_max);
-
+        this.anel = aneis;
         velocidade = new Vector2(0,0);
         setVelocidade_montado(0);
         getRectangulo().setSize(tamano.x/2);
-        numVidas = new Array<TIPOS_VIDA>();
-    }
-
-    public Array<TIPOS_VIDA> getNumVidas(){
-        return numVidas;
-    }
-
-    public void setNumVidas(TIPOS_VIDA vida){
-        numVidas.add(vida);
-        /*
-		 * poñer esta dependencia aqui igual no é moi correcto, o son vai no
-		 * controlador do alien if (vida == TIPOS_VIDA.MUERTO) {
-		 * Audio.morte.play(); } else if (vida == TIPOS_VIDA.SALVADO) {
-		 * Audio.transporter_sfx.play(); }
-		 */
-    }
-
-    public int getNumVidasSalvadas(){
-        int num = 0;
-        for(TIPOS_VIDA vida : numVidas){
-            if(vida == TIPOS_VIDA.SALVADO){
-                num++;
-            }
-        }
-        return num;
-    }
-
-    public int getNumVidasMortas(){
-        int num = 0;
-        for(TIPOS_VIDA vida : numVidas){
-            if(vida == TIPOS_VIDA.MUERTO){
-                num++;
-            }
-        }
-        return num;
     }
 
     public void inicializarAlien() {

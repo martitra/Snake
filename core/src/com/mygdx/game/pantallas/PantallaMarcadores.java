@@ -30,7 +30,7 @@ public class PantallaMarcadores implements Screen, InputProcessor {
         bitMapFont = new BitmapFont();
         camara2d = new OrthographicCamera();
         spriteBatch = new SpriteBatch();
-        fondo = new Texture(Gdx.files.internal("GRAFICOS/LIBGDX_itin1_pantallapause.jpg"));
+        fondo = new Texture(Gdx.files.internal("Texturas/pantallapause.jpg"));
         preferences = Gdx.app.getPreferences("marcadores");
         //almacenadas, as gardadas en preferencias(numvidassalvadas)
         numVidasSalvadas = preferences.getInteger("vidas_salvadas", 0);

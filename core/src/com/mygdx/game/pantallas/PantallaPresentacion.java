@@ -34,7 +34,7 @@ public class PantallaPresentacion implements Screen, InputProcessor {
         this.meuXogoGame = meuXogoGame;
         camara2d = new OrthographicCamera();
         spriteBatch = new SpriteBatch();
-        fondo = new Texture(Gdx.files.internal("GRAFICOS/LIBGDX_itin1_pantallapresentacion.png"));
+        fondo = new Texture(Gdx.files.internal("Texturas/pantallapresentacion.png"));
         temp = new Vector3();
         dedo = new Circle();
 
