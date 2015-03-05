@@ -107,7 +107,7 @@ public class ControladorXogo {
 
     public void update(float delta){
         controladorManzana();
-        controladorSerpiente(delta);
+        //controladorSerpiente(delta);
         procesarEntradas();
     }
 }

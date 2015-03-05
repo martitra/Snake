@@ -2,11 +2,12 @@ package com.mygdx.game.dam201;
 
 import com.badlogic.gdx.Game;
 import com.mygdx.game.pantallas.PantallaPresentacion;
+import com.mygdx.game.pantallas.PantallaXogo;
 
 public class MeuXogoGame extends Game {
 
 	
-	//private PantallaXogo pantallaXogo;
+	private PantallaXogo pantallaXogo;
     private PantallaPresentacion pantallaPresentacion;
 
 	@Override
@@ -16,10 +17,10 @@ public class MeuXogoGame extends Game {
         AssetsXogo.cargarTexturas();
        // Audio.inicializarMusica();
 
-		//pantallaXogo = new PantallaXogo(this);//para eliminar pantalla al cerrarla y no hide sino dispose
-		//setScreen(pantallaXogo);
-        pantallaPresentacion = new PantallaPresentacion(this);
-        setScreen(pantallaPresentacion);
+		pantallaXogo = new PantallaXogo(this);//para eliminar pantalla al cerrarla y no hide sino dispose
+		setScreen(pantallaXogo);
+        //pantallaPresentacion = new PantallaPresentacion(this);
+        //setScreen(pantallaPresentacion);
 	}
 
 	/* (non-Javadoc)
@@ -29,8 +30,8 @@ public class MeuXogoGame extends Game {
 	public void dispose() {//libera memoria, liberar recursos de memoria
 		// TODO Auto-generated method stub
 		super.dispose();
-		//pantallaXogo.dispose();//facermos esto para no hide sino dispose
-        pantallaPresentacion.dispose();
+		pantallaXogo.dispose();//facermos esto para no hide sino dispose
+        //pantallaPresentacion.dispose();
 
         AssetsXogo.liberarTexturas();
         //Audio.dispose();

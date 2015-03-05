@@ -94,9 +94,8 @@ public class RendererXogo implements InputProcessor {
     }
 
     private void debuxarSnake(){
-        spriteBatch.draw(AssetsXogo.textureSnake, serpiente.getPosicion().x,
-                serpiente.getPosicion().y, serpiente.getTamano().x,
-                serpiente.getTamano().y);
+        spriteBatch.draw(AssetsXogo.textureSnake, 20,
+                180, 20,20);
     }
 
     //private void debuxarNave(){

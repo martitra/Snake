@@ -12,20 +12,12 @@ import com.mygdx.game.dam201.AssetsXogo;
 
 
 public class Anel extends Personaxe {
-    public Array aneis;
+    public Array<Anel> aneis;
     public Texture textureAneis;
 
     public Anel(Vector2 posicion, Vector2 tamano, float velocidade_max) {
         super(posicion, tamano, velocidade_max);
         this.textureAneis = AssetsXogo.textureSnake;
-    }
-
-    public void iniciarAneis(){
-        aneis = new Array<Anel>();
-        for (int i=0;i<7;i++) {
-            //aneis[i] = textureAneis;
-        }
-
     }
 
     @Override
