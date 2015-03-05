@@ -1,6 +1,7 @@
 package com.mygdx.game.controlador;
 
 import com.badlogic.gdx.math.Intersector;
+import com.mygdx.game.modelo.Anel;
 import com.mygdx.game.modelo.Serpiente;
 import com.mygdx.game.modelo.Controis;
 import com.mygdx.game.modelo.Mundo;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 public class ControladorXogo {
     private Mundo meuMundo;
     private Serpiente serpiente;
+    private Anel anel;
 
     public enum Keys {
         ESQUERDA, DEREITA, ARRIBA, ABAIXO
@@ -69,36 +71,36 @@ public class ControladorXogo {
 
     private void controladorSerpiente(float delta){
 
-        serpiente.update(delta);
+        //anel.update(delta);
 
         // Impedir que se mova fora dos límites da pantalla
         // para que no se vaya infinitamente hacia la izquierda o derecha
-        if (serpiente.getPosicion().x <=0) {
-            serpiente.setPosicion(0, serpiente.getPosicion().y);
+        if (anel.getPosicion().x <=0) {
+            anel.setPosicion(0, anel.getPosicion().y);
         } else {
-            if (serpiente.getPosicion().x >= Mundo.TAMANO_MUNDO_ANCHO
-                    - serpiente.getTamano().x){
-                serpiente.setPosicion(Mundo.TAMANO_MUNDO_ANCHO
-                        - serpiente.getTamano().x, serpiente.getPosicion().y);
+            if (anel.getPosicion().x >= Mundo.TAMANO_MUNDO_ANCHO
+                    - anel.getTamano().x){
+                anel.setPosicion(Mundo.TAMANO_MUNDO_ANCHO
+                        - anel.getTamano().x, anel.getPosicion().y);
             }
         }
 
         //para que no se vaya infinitamente hacia arriba o abajo
-        if(serpiente.getPosicion().y <= Controis.FONDO_NEGRO.height){
-            serpiente.setPosicion(serpiente.getPosicion().x,
+        if(anel.getPosicion().y <= Controis.FONDO_NEGRO.height){
+            anel.setPosicion(anel.getPosicion().x,
                     Controis.FONDO_NEGRO.height);
         }else{
-            if(serpiente.getPosicion().y >= Mundo.TAMANO_MUNDO_ALTO
-                    -serpiente.getTamano().y){
-                serpiente.setPosicion(serpiente.getPosicion().x,
-                        Mundo.TAMANO_MUNDO_ALTO - serpiente.getTamano().y);
+            if(anel.getPosicion().y >= Mundo.TAMANO_MUNDO_ALTO
+                    -anel.getTamano().y){
+                anel.setPosicion(serpiente.getPosicion().x,
+                        Mundo.TAMANO_MUNDO_ALTO - anel.getTamano().y);
             }
         }
 
         /*
             Cando o alien chega a nave, sálvase e inicializamos
         */
-        if (Intersector.overlaps(meuMundo.getManzana().getRectangulo(), serpiente.getRectangulo())){
+        if (Intersector.overlaps(meuMundo.getManzana().getRectangulo(), anel.getRectangulo())){
             //serpiente.setNumVidas(Serpiente.TIPOS_VIDA.SALVADO);
             //Audio.transporter_sfx.play();
             //serpiente.inicializarAlien();
@@ -107,7 +109,7 @@ public class ControladorXogo {
 
     public void update(float delta){
         controladorManzana();
-        //controladorSerpiente(delta);
+        controladorSerpiente(delta);
         procesarEntradas();
     }
 }

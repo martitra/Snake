@@ -55,7 +55,7 @@ public class PantallaXogo implements Screen, InputProcessor {
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 		rendererXogo.render(delta);
-        controladorXogo.update(delta);
+        //controladorXogo.update(delta);
 
         //if (meuMundo.getSerpiente().getNumVidas().size >= 15) {
         //    finXogo = true;

@@ -25,7 +25,7 @@ public class PantallaPause implements Screen, InputProcessor {
         this.pantallaXogo = pantallaXogo;
         camara2d = new OrthographicCamera();
         spriteBatch = new SpriteBatch();
-        fondo = new Texture(Gdx.files.internal("GRAFICOS/LIBGDX_itin1_pantallapause.jpg"));
+        fondo = new Texture(Gdx.files.internal("Texturas/pantallapause.jpg"));
     }
 
     @Override

@@ -140,7 +140,7 @@ public class RendererXogo implements InputProcessor {
 
         //debuxarNave();
         debuxarSnake();//poñer o serpiente aquí para que se superpoña por encima do mundo
-        //debuxarControis();
+        debuxarControis();
         //debuxarVidas();
        // spriteBatch.setColor(Color.YELLOW);
         //spriteBatch.draw(AssetsXogo.textureAlien,100,100,15,15);
@@ -185,7 +185,7 @@ public class RendererXogo implements InputProcessor {
 	
 	public void dispose(){
 		Gdx.input.setInputProcessor(null);
-        spriteBatch.dispose();
+        //spriteBatch.dispose();
         //AssetsXogo.liberarTexturas();
         //bitmapFont.dispose();
 	}

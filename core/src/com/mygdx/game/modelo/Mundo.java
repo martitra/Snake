@@ -11,7 +11,7 @@ public final class Mundo {
     private Manzana manzana;
 
 	public Mundo() {
-        serpiente = new Serpiente(new Vector2(0,0));
+        serpiente = new Serpiente();
         manzana = new Manzana(new Vector2(0, 480), new Vector2(40, 20));
     }
 

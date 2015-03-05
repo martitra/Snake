@@ -18,9 +18,10 @@ public class Serpiente {
     private Vector2 posicion;
     public float velocidade_max;
 
-    public Serpiente(Vector2 velocidade){
-        this.velocidade = velocidade;
+    public Serpiente(){
         iniciarAneis();
+        this.velocidade = new Vector2(0,0);
+        this.velocidadeMontado = 0;
     }
 
     public void iniciarAneis(){
@@ -120,12 +121,9 @@ public class Serpiente {
                 getTamano().y);
     }
 
-    //@Override
     public void update(float delta) {
         // TODO Auto-generated method stub
-
-        setPosicion(getPosicion().x + (velocidade.x + velocidadeMontado)
-                * delta, getPosicion().y + velocidade.y * delta);
-
+        //setPosicion(getPosicion().x + (velocidade.x + velocidadeMontado)
+        //        * delta, getPosicion().y + velocidade.y * delta);
     }
 }

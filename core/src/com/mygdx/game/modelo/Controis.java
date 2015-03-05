@@ -6,14 +6,17 @@ import com.badlogic.gdx.math.Rectangle;
  * Created by dam201 on 06/02/2015 14:09.
  */
 public class Controis {
+    /*
+    TODO
+
+    Hace las flechas en la pantalla sin que se vean
+     */
 
     //define fondo negro
     public final static Rectangle FONDO_NEGRO = new Rectangle(0, 0,
             Mundo.TAMANO_MUNDO_ANCHO, 12);
 
     public final static Rectangle CONTROL = new Rectangle(10, 40, 50, 70);
-    public final static int POSVIDAS = 60;
-
     public final static Rectangle CONTROL_PAUSE = new Rectangle(5,0,10,10);
     public final static Rectangle CONTROL_SAIR = new Rectangle(18,0,10,10);
 
