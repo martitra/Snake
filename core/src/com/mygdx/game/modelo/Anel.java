@@ -17,16 +17,14 @@ public class Anel extends Personaxe {
     public Anel(Vector2 posicion, Vector2 tamano, float velocidade_max) {
         super(posicion, tamano, velocidade_max);
         this.textureAneis = AssetsXogo.textureSnake;
-        velocidade = new Vector2(0,0);
+        //velocidade = new Vector2(0,0);
         //setVelocidade_montado(0);
-        getRectangulo().setSize(tamano.x/2);
+        //getRectangulo().setSize(tamano.x/2);
     }
-
-
 
     @Override
     public void update(float delta) {
-        setPosicion(getPosicion().x + (velocidade.x)
-                * delta, getPosicion().y + velocidade.y * delta);
+
     }
+
 }

@@ -20,19 +20,35 @@ public class Serpiente {
 
     public Serpiente(){
         iniciarAneis();
-        this.velocidade = new Vector2(0,0);
-        this.velocidadeMontado = 0;
+        //this.velocidade = new Vector2(0,0);
+        //this.velocidadeMontado = 0;
+    }
+
+    public void setDireccion(Integer direccion){
+
+        //mirar se direccion valida -> qeu pode ir para esa direccion
+        //saber onde está comparado co segundo anel
+        //mirar x e y
+        //se non poñer a misma direccion
+
+
+        for(int i =0;i<aneis.size;i++){
+            Vector2 pos = new Vector2(aneis.get(0).getPosicion().x,aneis.get(0).getPosicion().y);
+            aneis.get(i).getPosicion().x = pos.x;
+            aneis.get(i).getPosicion().y = pos.y;
+        }
+
     }
 
     public void iniciarAneis(){
         aneis = new Array<Anel>();
         aneis.add(new Anel(new Vector2(20,20),new Vector2(20,20), 0f));
         aneis.add(new Anel(new Vector2(20,40),new Vector2(20,20), 0f));
+        aneis.add(new Anel(new Vector2(20,60),new Vector2(20,20), 0f));
         aneis.add(new Anel(new Vector2(20,80),new Vector2(20,20), 0f));
         aneis.add(new Anel(new Vector2(20,100),new Vector2(20,20), 0f));
         aneis.add(new Anel(new Vector2(20,120),new Vector2(20,20), 0f));
         aneis.add(new Anel(new Vector2(20,140),new Vector2(20,20), 0f));
-        aneis.add(new Anel(new Vector2(20,180),new Vector2(20,20), 0f));
 
     }
 
@@ -123,7 +139,19 @@ public class Serpiente {
 
     public void update(float delta) {
         // TODO Auto-generated method stub
+        //coller direccion de
+        //switch (direccion){
+        //    Vector2 pos = new Vector2(aneis.get(0).getPosicion().x,aneis.get(0).getPosicion().y);
+        //    aneis.get(i).getPosicion().x = pos.x;
+        //    aneis.get(i).getPosicion().y = pos.y;
+
+        //}
+
         //setPosicion(getPosicion().x + (velocidade.x + velocidadeMontado)
         //        * delta, getPosicion().y + velocidade.y * delta);
+    }
+
+    public Array<Anel> getAneis() {
+        return aneis;
     }
 }

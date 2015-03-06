@@ -10,7 +10,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.StringBuilder;
+import com.mygdx.game.modelo.Anel;
 import com.mygdx.game.modelo.Serpiente;
 import com.mygdx.game.modelo.Controis;
 import com.mygdx.game.modelo.Mundo;
@@ -71,11 +73,11 @@ public class RendererXogo implements InputProcessor {
         //        Controis.FONDO_NEGRO.height);
 
         //Control direccion
-        spriteBatch.draw(AssetsXogo.textureControisFrechas,
-                Controis.CONTROL.x,
-                Controis.CONTROL.y,
-                Controis.CONTROL.width,
-                Controis.CONTROL.height);
+       // spriteBatch.draw(AssetsXogo.textureControisFrechas,
+        //        Controis.CONTROL.x,
+        //        Controis.CONTROL.y,
+        //        Controis.CONTROL.width,
+        //        Controis.CONTROL.height);
 
         //
         spriteBatch.draw(AssetsXogo.texturePausa,
@@ -94,8 +96,11 @@ public class RendererXogo implements InputProcessor {
     }
 
     private void debuxarSnake(){
-        spriteBatch.draw(AssetsXogo.textureSnake, 20,
-                180, 20,20);
+
+        Array<Anel> aneis = serpiente.getAneis();
+        for (int i=0;i<aneis.size;i++) {
+            spriteBatch.draw(AssetsXogo.textureSnake,aneis.get(i).getPosicion().x,aneis.get(i).getPosicion().y);
+        }
     }
 
     //private void debuxarNave(){
