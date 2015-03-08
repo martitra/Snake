@@ -6,20 +6,18 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Manzana{
 
-    /** Posición */
     protected Vector2 posicion;
-    /** Tamaño */
     protected Vector2 tamano;
     private Rectangle rectangulo;
-    private float altura = 20;
-    private float anchura = 20;
+    private float altura = 10;
+    private float anchura = 10;
+    float posicionx;
+    float posiciony;
 
-	public Manzana(Vector2 posicion, Vector2 tamano) {
+    public Manzana(Vector2 posicion) {
 		this.posicion = posicion;
-        this.tamano = tamano;
+        this.tamano = new Vector2(altura,anchura);
         rectangulo = new Rectangle(posicion.x,posicion.y, tamano.x,tamano.y);
-        rectangulo.setWidth(anchura);
-        rectangulo.setHeight(altura);
 	}
 
     /**
@@ -41,8 +39,8 @@ public class Manzana{
         return new Rectangle(
                 getPosicion().x,
                 getPosicion().y,
-                getTamano().x,
-                getTamano().y);
+                10,
+                10);
     }
 
     /**
@@ -81,7 +79,11 @@ public class Manzana{
 	public void update() {
 		// TODO Auto-generated method stub
         //teño que poñelo en random para colocalo dentro da pantalla
-        //setPosicion(MathUtils.random();
+
+        posicionx = MathUtils.random(0,25);
+        posiciony = MathUtils.random(0,25);
+        setPosicion(posicionx*13,posiciony*13);
+        //setPosicion(0,0);
 	}
 
 }

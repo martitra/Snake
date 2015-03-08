@@ -12,6 +12,7 @@ import com.mygdx.game.controlador.ControladorXogo;
 //import com.xogos2d.dam.Audio;
 import com.mygdx.game.dam201.MeuXogoGame;
 import com.mygdx.game.dam201.RendererXogo;
+import com.mygdx.game.dam201.Utiles;
 import com.mygdx.game.modelo.Controis;
 import com.mygdx.game.modelo.Mundo;
 
@@ -43,7 +44,7 @@ public class PantallaXogo implements Screen, InputProcessor {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		//Utiles.imprimirLog("PantallaXogo", "SHOW", "Test");
+		Utiles.imprimirLog("PantallaXogo", "SHOW", "Test");
         //indicamos a clase que inmplementa o interface InputProcessor
         Gdx.input.setInputProcessor(this);
         //Audio.playMusica(); // iniciar música de fondo
@@ -55,7 +56,7 @@ public class PantallaXogo implements Screen, InputProcessor {
 	public void render(float delta) {
 		// TODO Auto-generated method stub
 		rendererXogo.render(delta);
-        //controladorXogo.update(delta);
+        controladorXogo.update(delta);
 
         //if (meuMundo.getSerpiente().getNumVidas().size >= 15) {
         //    finXogo = true;
@@ -77,7 +78,7 @@ public class PantallaXogo implements Screen, InputProcessor {
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
 		rendererXogo.resize(width, height);
-		//Utiles.imprimirLog("PantallaXogo", "RESIZE", "Test");
+		Utiles.imprimirLog("PantallaXogo", "RESIZE", "Test");
 	}
 
 	@Override

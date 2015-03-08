@@ -99,14 +99,15 @@ public class RendererXogo implements InputProcessor {
 
         Array<Anel> aneis = serpiente.getAneis();
         for (int i=0;i<aneis.size;i++) {
-            spriteBatch.draw(AssetsXogo.textureSnake,aneis.get(i).getPosicion().x,aneis.get(i).getPosicion().y);
+            spriteBatch.draw(AssetsXogo.textureSnake,aneis.get(i).getPosicion().x,aneis.get(i).getPosicion().y,aneis.get(i).getTamano().x,
+                    aneis.get(i).getTamano().y);
         }
     }
 
-    //private void debuxarNave(){
-    //    spriteBatch.draw(AssetsXogo.textureNave, manzana.getPosicion().x,
-    //            manzana.getPosicion().y, manzana.getTamano().x, manzana.getTamano().y);
-    //}
+    private void debuxarMaza(){
+        spriteBatch.draw(AssetsXogo.textureManzana, manzana.getPosicion().x,
+                manzana.getPosicion().y, manzana.getTamano().x, manzana.getTamano().y);
+    }
 
     private void debuxarFondo(){
         spriteBatch.draw(AssetsXogo.textureFondo, 0,0,
@@ -143,7 +144,7 @@ public class RendererXogo implements InputProcessor {
 
         //debuxarFondo();
 
-        //debuxarNave();
+        debuxarMaza();
         debuxarSnake();//poñer o serpiente aquí para que se superpoña por encima do mundo
         debuxarControis();
         //debuxarVidas();
