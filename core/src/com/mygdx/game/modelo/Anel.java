@@ -24,14 +24,36 @@ public class Anel extends Personaxe {
 
     @Override
     public void update(float delta) {
-
+        //setPosicion(getPosicion().x,getPosicion().y + (10 * delta));
     }
 
 
     public void update(float delta,Integer posicion) {
+        if (posicion == null){
+
+        }else{
+            switch (posicion) {
+                case 4:
+                    setPosicion(getPosicion().x + (-10 * delta), getPosicion().y);
+                    break;
+                case 6:
+                    setPosicion(getPosicion().x + (10 * delta), getPosicion().y);
+                    break;
+                case 8:
+                    setPosicion(getPosicion().x, getPosicion().y + (10 * delta));
+                    break;
+                case 2:
+                    setPosicion(getPosicion().x, getPosicion().y + (-10 * delta));
+                    break;
+                default:
+                    setPosicion(getPosicion().x, getPosicion().y);
+                    break;
+            }
+        }
+
 
         //setPosicion(getPosicion().x + (10 * delta),0);
-        setPosicion(getPosicion().x,getPosicion().y + (2 * delta));
+        //setPosicion(getPosicion().x,getPosicion().y + (10 * delta));
     }
 
 }

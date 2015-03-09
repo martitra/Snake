@@ -44,17 +44,12 @@ public class ControladorXogo {
 
     private void procesarEntradas(){
         if (keys.get(Keys.DEREITA)) {
-            //serpiente.setVelocidadeX(serpiente.velocidade_max);
             serpiente.setDireccion(6);
-            //serpiente.setVelocidade(10f);
-            //serpiente.setVelocidadeX(-10);
             //no puede girar a la izquierda
         }
         if (keys.get(Keys.ESQUERDA)){
-            //serpiente.setVelocidadeX(-serpiente.velocidade_max);
             serpiente.setDireccion(4);
-            //serpiente.setVelocidade(-10f);
-            //serpiente.setVelocidadeX(-10);
+
             //no puede girar a la derecha
         }
        /* if(!(keys.get(Keys.ESQUERDA)) && !(keys.get(Keys.DEREITA))) {
@@ -62,15 +57,11 @@ public class ControladorXogo {
         }*/
 
         if (keys.get(Keys.ARRIBA)) {
-            //serpiente.setVelocidadeY(serpiente.velocidade_max);
             serpiente.setDireccion(8);
-            //serpiente.setVelocidade(10f);
             //no puede ir abajo
         }
         if (keys.get(Keys.ABAIXO)){
-            //serpiente.setVelocidadeY(-serpiente.velocidade_max);
             serpiente.setDireccion(2);
-            //serpiente.setVelocidade(-10f);
             //no puede ir arriba
         }
        /* if(!(keys.get(Keys.ARRIBA)) && !(keys.get(Keys.ABAIXO))) {
