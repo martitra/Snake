@@ -11,8 +11,8 @@ public class Manzana{
     private Rectangle rectangulo;
     private float altura = 10;
     private float anchura = 10;
-    float posicionx;
-    float posiciony;
+    public float posicionx;
+    public float posiciony;
 
     public Manzana(Vector2 posicion) {
 		this.posicion = posicion;
@@ -39,8 +39,8 @@ public class Manzana{
         return new Rectangle(
                 getPosicion().x,
                 getPosicion().y,
-                10,
-                10);
+                getTamano().x,
+                getTamano().y);
     }
 
     /**
@@ -75,14 +75,19 @@ public class Manzana{
         return tamano;
     }
 
+    public void nuevaPosicion(){
+
+        posicionx = MathUtils.random(0,25);
+        posiciony = MathUtils.random(0,25);
+        Manzana manzana = new Manzana(new Vector2(posicionx*13,posiciony*13));
+        //manzana.setPosicion(posicionx*13,posiciony*13);
+    }
 
 	public void update() {
 		// TODO Auto-generated method stub
         //teño que poñelo en random para colocalo dentro da pantalla
 
-        posicionx = MathUtils.random(0,25);
-        posiciony = MathUtils.random(0,25);
-        setPosicion(posicionx*13,posiciony*13);
+
         //setPosicion(0,0);
 	}
 

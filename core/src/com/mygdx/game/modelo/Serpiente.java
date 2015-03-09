@@ -21,9 +21,10 @@ public class Serpiente {
 
     public Serpiente(){
         iniciarAneis();
+       // velocidade  = 10;
         this.velocidade_max = 0;
-        this.tamano = new Vector2(aneis.get(0).getTamano().x,aneis.get(aneis.size-1).getTamano().y);
-        this.posicion = new Vector2(aneis.get(0).getPosicion().x,aneis.get(aneis.size-1).getPosicion().y);
+       // this.tamano = new Vector2(aneis.get(0).getTamano().x,aneis.get(aneis.size-1).getTamano().y);
+       // this.posicion = new Vector2(aneis.get(0).getPosicion().x,aneis.get(aneis.size-1).getPosicion().y);
     }
 
     public void setDireccion(Integer direccion){
@@ -156,11 +157,11 @@ public class Serpiente {
         aneis = new Array<Anel>();
         aneis.add(new Anel(new Vector2(50,80),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,70),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,60),new Vector2(10,10), 10f));
+       /* aneis.add(new Anel(new Vector2(50,60),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,50),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,40),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,30),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,20),new Vector2(10,10), 10f));
+        aneis.add(new Anel(new Vector2(50,20),new Vector2(10,10), 10f));*/
 
     }
 
@@ -258,7 +259,12 @@ public class Serpiente {
 
         //setPosicion(getPosicion().x + (velocidade.x + velocidadeMontado)
         //        * delta, getPosicion().y + velocidade.y * delta);
-        setPosicion(getAneis().get(0).getPosicion().x + velocidade*delta,getAneis().get(0).getPosicion().y+velocidade*delta);
+        for (int i=0;i<getAneis().size;i++){
+           // setPosicion(getAneis().get(i).getPosicion().x + velocidade*delta,0);
+            getAneis().get(i).update(delta);
+           // System.out.println("Velocidade " + velocidade);
+        }
+
     }
 
     public Array<Anel> getAneis() {
