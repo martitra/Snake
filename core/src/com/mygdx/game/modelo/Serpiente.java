@@ -123,12 +123,10 @@ public class Serpiente {
             //están en vertical
             direccionMovimiento = true;
             if (anel1.x > anel2.x){
-                //va hacia la derecha
-                //no puede ir hacia la izquierda o derecha que ya va
-
+                direccion = 6;
             }
             else{
-                //horizontal - izquierda
+                direccion=4;
 
             }
         }
@@ -136,11 +134,11 @@ public class Serpiente {
             //horizontal
             direccionMovimiento = false;
             if(anel1.y > anel2.y){
-                //hacia arriba
+                direccion = 8;
 
             }
             else {
-                //hacia abajo
+               direccion = 2;
 
             }
         }
@@ -243,18 +241,8 @@ public class Serpiente {
 
     public void update(float delta) {
         // TODO Auto-generated method stub
-        //coller direccion de
-        //switch (direccion){
-        //    Vector2 pos = new Vector2(aneis.get(0).getPosicion().x,aneis.get(0).getPosicion().y);
-        //    aneis.get(i).getPosicion().x = pos.x;
-        //    aneis.get(i).getPosicion().y = pos.y;
 
-        //}
-
-        //setPosicion(getPosicion().x + (velocidade.x + velocidadeMontado)
-        //        * delta, getPosicion().y + velocidade.y * delta);
         for (int i=0;i<getAneis().size;i++){
-           // setPosicion(getAneis().get(i).getPosicion().x + velocidade*delta,0);
             getAneis().get(i).update(delta,direccion);
            // System.out.println("Velocidade " + velocidade);
         }
