@@ -123,10 +123,10 @@ public class Serpiente {
             //están en vertical
             direccionMovimiento = true;
             if (anel1.x > anel2.x){
-                direccion = 6;
+                //direccion = 6;
             }
             else{
-                direccion=4;
+                //direccion=4;
 
             }
         }
@@ -134,11 +134,11 @@ public class Serpiente {
             //horizontal
             direccionMovimiento = false;
             if(anel1.y > anel2.y){
-                direccion = 8;
+                //direccion = 8;
 
             }
             else {
-               direccion = 2;
+               //direccion = 2;
 
             }
         }
