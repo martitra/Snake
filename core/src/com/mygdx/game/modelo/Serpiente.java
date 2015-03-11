@@ -3,6 +3,7 @@ package com.mygdx.game.modelo;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.controlador.ControladorXogo;
 
 import java.util.ArrayList;
 
@@ -20,11 +21,17 @@ public class Serpiente {
     public Integer direccion;
     //public boolean arriba,abajo,derecha,izquierda;
     public boolean direccionMovimiento;//horizontal true
+    public boolean arriba;
+    public boolean abaixo;
+    public boolean dereita;
+    public boolean esquerda;
+    private ControladorXogo controladorXogo;
 
     public Serpiente(){
         iniciarAneis();
        // velocidade  = 10;
         this.velocidade_max = 0;
+        //esquerda = true;
 
        // this.tamano = new Vector2(aneis.get(0).getTamano().x,aneis.get(aneis.size-1).getTamano().y);
        // this.posicion = new Vector2(aneis.get(0).getPosicion().x,aneis.get(aneis.size-1).getPosicion().y);
@@ -149,11 +156,11 @@ public class Serpiente {
         aneis = new Array<Anel>();
         aneis.add(new Anel(new Vector2(50,80),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,70),new Vector2(10,10), 10f));
-/*        aneis.add(new Anel(new Vector2(50,60),new Vector2(10,10), 10f));
+        aneis.add(new Anel(new Vector2(50,60),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,50),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,40),new Vector2(10,10), 10f));
         aneis.add(new Anel(new Vector2(50,30),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,20),new Vector2(10,10), 10f));*/
+        aneis.add(new Anel(new Vector2(50,20),new Vector2(10,10), 10f));
 
     }
 
@@ -242,10 +249,81 @@ public class Serpiente {
     public void update(float delta) {
         // TODO Auto-generated method stub
 
-        for (int i=0;i<getAneis().size;i++){
-            getAneis().get(i).update(delta,direccion);
+        //for (int i=0;i<getAneis().size;i++){
+        //    getAneis().get(i).update(delta);
            // System.out.println("Velocidade " + velocidade);
+       // }
+        if (esquerda){
+            anel.update(delta);
+            //aneis.add(new Anel(new Vector2(aneis.get(aneis.size - 1).getPosicion().x - 1,
+                    //aneis.get(aneis.size - 1).getPosicion().y),new Vector2(20,20),velocidade));
+
+            //aneis.get(0).setPosicion(aneis.get(0).getPosicion().x-(float)0.1,aneis.get(0).getPosicion().y);
+            for (int i = aneis.size-1; i >= 0; i--) {
+                if (i==0){
+                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                    Vector2 nuevo = new Vector2(pos.x-(float)0.5,pos.y);
+                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
+
+                }
+                else {
+                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
+                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
+                    ultimo = penultimo;
+                }
+            }
+
         }
+        if (dereita){
+            //snake.add(new Vector2(snake.get(snake.size - 1).x + 1, snake.get(snake.size - 1).y));
+            for (int i = aneis.size-1; i >= 0; i--) {
+                if (i==0){
+                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                    Vector2 nuevo = new Vector2(pos.x+(float)0.5,pos.y);
+                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
+                }
+                else {
+                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
+                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
+                    ultimo = penultimo;
+                }
+            }
+        }
+        if (arriba){
+            //snake.add(new Vector2(snake.get(snake.size - 1).x, snake.get(snake.size - 1).y + 1));
+            for (int i = aneis.size-1; i >= 0; i--) {
+                if (i==0){
+                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                    Vector2 nuevo = new Vector2(pos.x,pos.y+(float)0.5);
+                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
+                }
+                else {
+                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
+                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
+                    ultimo = penultimo;
+                }
+            }
+        }
+        if (abaixo){
+            //snake.add(new Vector2(snake.get(snake.size - 1).x, snake.get(snake.size - 1).y - 1));
+            for (int i = aneis.size-1; i >= 0; i--) {
+                if (i==0){
+                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                    Vector2 nuevo = new Vector2(pos.x,pos.y-(float)0.5);
+                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
+                }
+                else {
+                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
+                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
+                    ultimo = penultimo;
+                }
+            }
+        }
+
 
     }
 

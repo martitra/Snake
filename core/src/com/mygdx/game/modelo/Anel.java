@@ -15,6 +15,7 @@ public class Anel extends Personaxe {
     private Vector2 velocidade;
     private final int TEMPORIZADOR = 1;
     private float tempo;
+    private Serpiente serpiente;
 
 
     public Anel(Vector2 posicion, Vector2 tamano, float velocidade_max) {
@@ -26,50 +27,21 @@ public class Anel extends Personaxe {
         //getRectangulo().setSize(tamano.x/2);
     }
 
-    @Override
+
     public void update(float delta) {
-        //setPosicion(getPosicion().x,getPosicion().y + (10 * delta));
-    }
 
-
-    public void update(float delta,Integer posicion) {
-        if (posicion == null){
-
-        }else{
-            switch (posicion) {
-                case 4:
-                    tempo=+delta;
-                    if(tempo<TEMPORIZADOR) {
-                        setPosicion(getPosicion().x + (-10 * delta), getPosicion().y);
-                    }
-                    tempo=0;
-
-                    break;
-                case 6:
-                    tempo=+delta;
-                    if (tempo<TEMPORIZADOR) {
-                        setPosicion(getPosicion().x + (10 * delta), getPosicion().y);
-                    }
-                    tempo =0;
-                    break;
-                case 8:
-                    tempo=+delta;
-                    if(tempo<TEMPORIZADOR) {
-                        setPosicion(getPosicion().x, getPosicion().y + (10 * delta));
-                    }
-                    tempo = 0;
-                    break;
-                case 2:
-                    tempo=+delta;
-                    if(tempo<TEMPORIZADOR) {
-                        setPosicion(getPosicion().x, getPosicion().y + (-10 * delta));
-                    }
-                    tempo = 0;
-                    break;
-            }
+        if (serpiente.esquerda) {
+            setPosicion(getPosicion().x + (-10 * delta), getPosicion().y);
         }
-
-
+        else if(serpiente.dereita) {
+            setPosicion(getPosicion().x + (10 * delta), getPosicion().y);
+        }
+        else if (serpiente.arriba) {
+            setPosicion(getPosicion().x, getPosicion().y + (10 * delta));
+        }
+        else if(serpiente.abaixo) {
+            setPosicion(getPosicion().x, getPosicion().y + (-10 * delta));
+        }
         //setPosicion(getPosicion().x + (10 * delta),0);
         //setPosicion(getPosicion().x,getPosicion().y + (10 * delta));
     }

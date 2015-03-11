@@ -12,7 +12,7 @@ public final class Mundo {
 
 	public Mundo() {
         serpiente = new Serpiente();
-        manzana = new Manzana(new Vector2(0,0));
+        manzana = new Manzana(new Vector2(50,100));
     }
 
     public Serpiente getSerpiente() {

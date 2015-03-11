@@ -19,6 +19,11 @@ public class ControladorXogo {
     private Manzana manzana;
     private Anel anel;
     float delay = 1; // seconds
+    public static boolean ESQUERDA;
+    public static boolean DEREITA;
+    public static boolean ARRIBA;
+    public static boolean ABAIXO;
+    public int puntuacion;
 
     public enum Keys {
         ESQUERDA, DEREITA, ARRIBA, ABAIXO
@@ -44,25 +49,32 @@ public class ControladorXogo {
 
     private void procesarEntradas(){
         if (keys.get(Keys.DEREITA)) {
-            serpiente.setDireccion(6);
+            //serpiente.setDireccion(6);
             //no puede girar a la izquierda
+            DEREITA = true;
+            ESQUERDA = ARRIBA = ABAIXO = false;
         }
         if (keys.get(Keys.ESQUERDA)){
-            serpiente.setDireccion(4);
-
+            //serpiente.setDireccion(4);
             //no puede girar a la derecha
+            ESQUERDA =true;
+            DEREITA = ARRIBA = ABAIXO = false;
         }
        /* if(!(keys.get(Keys.ESQUERDA)) && !(keys.get(Keys.DEREITA))) {
             //serpiente.setVelocidadeX(0);
         }*/
 
         if (keys.get(Keys.ARRIBA)) {
-            serpiente.setDireccion(8);
+            //serpiente.setDireccion(8);
             //no puede ir abajo
+            ARRIBA = true;
+            ESQUERDA = DEREITA = ABAIXO = false;
         }
         if (keys.get(Keys.ABAIXO)){
-            serpiente.setDireccion(2);
+            //serpiente.setDireccion(2);
             //no puede ir arriba
+            ABAIXO = true;
+            ESQUERDA = ARRIBA = DEREITA = false;
         }
        /* if(!(keys.get(Keys.ARRIBA)) && !(keys.get(Keys.ABAIXO))) {
             //serpiente.setVelocidadeY(0);
@@ -73,6 +85,7 @@ public class ControladorXogo {
         this.meuMundo = meuMundo;
         serpiente = meuMundo.getSerpiente();
         manzana = meuMundo.getManzana();
+        puntuacion = 0;
     }
 
     private void controladorManzana(){
@@ -109,26 +122,28 @@ public class ControladorXogo {
                     serpiente.iniciarAneis();
                 }
             }
-        }
+
 
         /*
             Cando o alien chega a nave, sálvase e inicializamos
         */
 
-            if (Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(), meuMundo.getManzana().getRectangulo() )){
-                    //|| Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(), serpiente.getAneis().get(i).getRectangulo())) {
+            if (Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(), meuMundo.getManzana().getRectangulo())) {
+                //|| Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(), serpiente.getAneis().get(i).getRectangulo())) {
                 //serpiente.setNumVidas(Serpiente.TIPOS_VIDA.SALVADO);
                 //Audio.transporter_sfx.play();
                 //serpiente.anadirAnel(new Anel(serpiente.getAneis().get(serpiente.getAneis().size).getPosicion(),));
                 //serpiente.iniciarAneis();
                 //meuMundo.getManzana().
-                float posicionx = MathUtils.random(0,25);
-                float posiciony = MathUtils.random(0,25);
-                manzana.setPosicion(posicionx*13,posiciony*13);
-
+                float posicionx = MathUtils.random(0, 25);
+                float posiciony = MathUtils.random(0, 25);
+                manzana.setPosicion(posicionx * 13, posiciony * 13);
+                puntuacion += 1;
+                System.out.println(puntuacion);
             }
+        }
         for (int i=0;i<serpiente.getAneis().size;i++) {
-
+            //aquí para que no se toque a sí misma
         }
 
 
@@ -140,5 +155,6 @@ public class ControladorXogo {
         controladorManzana();
         controladorSerpiente(delta);
         procesarEntradas();
+        //serpiente.update(delta);
     }
 }

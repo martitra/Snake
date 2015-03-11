@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.StringBuilder;
+import com.mygdx.game.controlador.ControladorXogo;
 import com.mygdx.game.modelo.Anel;
 import com.mygdx.game.modelo.Serpiente;
 import com.mygdx.game.modelo.Controis;
@@ -95,6 +96,25 @@ public class RendererXogo implements InputProcessor {
 
     }
 
+    public void procesoDireccion(){
+        if (ControladorXogo.ESQUERDA && !serpiente.dereita){
+            serpiente.esquerda = true;
+            serpiente.dereita = serpiente.arriba= serpiente.abaixo = false;
+        }
+        if (ControladorXogo.DEREITA && !serpiente.esquerda){
+            serpiente.dereita = true;
+            serpiente.esquerda = serpiente.arriba = serpiente.abaixo = false;
+        }
+        if (ControladorXogo.ARRIBA && !serpiente.abaixo){
+            serpiente.arriba = true;
+            serpiente.esquerda = serpiente.dereita = serpiente.abaixo = false;
+        }
+        if (ControladorXogo.ABAIXO && !serpiente.arriba){
+            serpiente.abaixo = true;
+            serpiente.esquerda = serpiente.dereita = serpiente.arriba = false;
+        }
+    }
+
     private void debuxarSnake(){
 
         Array<Anel> aneis = serpiente.getAneis();
@@ -131,6 +151,7 @@ public class RendererXogo implements InputProcessor {
 //    }
 
 
+
     /**
      * tempo que pasa entre un frame e o siguiente
      * @param delta
@@ -143,7 +164,7 @@ public class RendererXogo implements InputProcessor {
 		//spriteBatch.draw(AssetsXogo.textureAlien, temporal.x,temporal.y,15,15);
 
         //debuxarFondo();
-
+        procesoDireccion();
         debuxarMaza();
         debuxarSnake();//poñer o serpiente aquí para que se superpoña por encima do mundo
         debuxarControis();
