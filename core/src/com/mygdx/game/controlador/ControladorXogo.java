@@ -17,10 +17,11 @@ public class ControladorXogo {
     private Mundo meuMundo;
     private Serpiente serpiente;
     private Manzana manzana;
+    public static boolean borrar = true;
     private Anel anel;
     float delay = 1; // seconds
     public static boolean ESQUERDA;
-    public static boolean DEREITA;
+    public static boolean DEREITA=true;
     public static boolean ARRIBA;
     public static boolean ABAIXO;
     public int puntuacion;
@@ -48,13 +49,13 @@ public class ControladorXogo {
 
 
     private void procesarEntradas(){
-        if (keys.get(Keys.DEREITA)) {
+        if (keys.get(Keys.DEREITA)&& !serpiente.esquerda) {
             //serpiente.setDireccion(6);
             //no puede girar a la izquierda
             DEREITA = true;
             ESQUERDA = ARRIBA = ABAIXO = false;
         }
-        if (keys.get(Keys.ESQUERDA)){
+        if (keys.get(Keys.ESQUERDA)&& !serpiente.dereita){
             //serpiente.setDireccion(4);
             //no puede girar a la derecha
             ESQUERDA =true;
@@ -64,13 +65,13 @@ public class ControladorXogo {
             //serpiente.setVelocidadeX(0);
         }*/
 
-        if (keys.get(Keys.ARRIBA)) {
+        if (keys.get(Keys.ARRIBA) && !serpiente.abaixo) {
             //serpiente.setDireccion(8);
             //no puede ir abajo
             ARRIBA = true;
             ESQUERDA = DEREITA = ABAIXO = false;
         }
-        if (keys.get(Keys.ABAIXO)){
+        if (keys.get(Keys.ABAIXO) && !serpiente.arriba){
             //serpiente.setDireccion(2);
             //no puede ir arriba
             ABAIXO = true;
@@ -96,11 +97,13 @@ public class ControladorXogo {
     private void controladorSerpiente(float delta){
 
 
-        for (int i=0;i<serpiente.getAneis().size;i++) {
-            serpiente.update(delta);
+        //for (int i=0;i<serpiente.getAneis().size;i++) {
+        //System.out.println(serpiente.getAneis().size);
+            //serpiente.update(delta);
             // Impedir que se mova fora dos límites da pantalla
             // para que no se vaya infinitamente hacia la izquierda o derecha
-            if (serpiente.getAneis().get(0).getPosicion().x <= 0 || serpiente.getAneis().get(0).getPosicion().y <= 0) {
+            if (serpiente.getAneis().get(0).getPosicion().x <= 0 ||
+                    serpiente.getAneis().get(0).getPosicion().y <= 0) {
                 //serpiente.getAneis().get(0).setPosicion(0, serpiente.getPosicion().y);
                 serpiente.iniciarAneis();
                 //morre a serpiente
@@ -139,9 +142,11 @@ public class ControladorXogo {
                 float posiciony = MathUtils.random(0, 25);
                 manzana.setPosicion(posicionx * 13, posiciony * 13);
                 puntuacion += 1;
+                borrar = false;
                 System.out.println(puntuacion);
+
             }
-        }
+       // }
         for (int i=0;i<serpiente.getAneis().size;i++) {
             //aquí para que no se toque a sí misma
         }
@@ -155,6 +160,7 @@ public class ControladorXogo {
         controladorManzana();
         controladorSerpiente(delta);
         procesarEntradas();
-        //serpiente.update(delta);
+        serpiente.update(delta);
+
     }
 }

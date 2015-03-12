@@ -18,8 +18,8 @@ public class Anel extends Personaxe {
     private Serpiente serpiente;
 
 
-    public Anel(Vector2 posicion, Vector2 tamano, float velocidade_max) {
-        super(posicion, tamano, velocidade_max);
+    public Anel(Vector2 posicion) {
+        super(posicion);
         this.textureAneis = AssetsXogo.textureSnake;
         tempo = 0;
        // velocidade = new Vector2(0,0);

@@ -29,6 +29,7 @@ public class Serpiente {
 
     public Serpiente(){
         iniciarAneis();
+        //ControladorXogo.DEREITA = true;
        // velocidade  = 10;
         this.velocidade_max = 0;
         //esquerda = true;
@@ -154,18 +155,19 @@ public class Serpiente {
 
     public void iniciarAneis(){
         aneis = new Array<Anel>();
-        aneis.add(new Anel(new Vector2(50,80),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,70),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,60),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,50),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,40),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,30),new Vector2(10,10), 10f));
-        aneis.add(new Anel(new Vector2(50,20),new Vector2(10,10), 10f));
+        aneis.add(new Anel(new Vector2(50,80)));
+        aneis.add(new Anel(new Vector2(50,75)));
+        aneis.add(new Anel(new Vector2(50,70)));
+        aneis.add(new Anel(new Vector2(50,65)));
+        aneis.add(new Anel(new Vector2(50,60)));
+        aneis.add(new Anel(new Vector2(50,55)));
+        aneis.add(new Anel(new Vector2(50,50)));
 
     }
 
-    public void anadirAnel(Anel novoAnel){
-        aneis.add(novoAnel);
+    public void anadirAnel(float x,float y){
+        aneis.add(new Anel(new Vector2(x,y)));
+        System.out.println("pos x: "+x);
     }
 
     public void setVelocidade(float velocidade) {
@@ -248,82 +250,104 @@ public class Serpiente {
 
     public void update(float delta) {
         // TODO Auto-generated method stub
-
+        direccionMovimiento = getDireccion();
         //for (int i=0;i<getAneis().size;i++){
         //    getAneis().get(i).update(delta);
-           // System.out.println("Velocidade " + velocidade);
+            //System.out.println("Velocidade " + ControladorXogo.ESQUERDA+ControladorXogo.DEREITA);
        // }
-        if (esquerda){
-            anel.update(delta);
-            //aneis.add(new Anel(new Vector2(aneis.get(aneis.size - 1).getPosicion().x - 1,
-                    //aneis.get(aneis.size - 1).getPosicion().y),new Vector2(20,20),velocidade));
+        if (ControladorXogo.ESQUERDA){
+            if (direccionMovimiento || ControladorXogo.ESQUERDA) {
+                //for (int i = 0; i < getAneis().size; i++) {
+                //    getAneis().get(i).update(delta);
+                //}
+                //System.out.println("Esquerda");
+                //anel.update(delta);
+                //aneis.add(new Anel(new Vector2(aneis.get(aneis.size - 1).getPosicion().x - 1,
+                //aneis.get(aneis.size - 1).getPosicion().y),new Vector2(20,20),velocidade));
 
-            //aneis.get(0).setPosicion(aneis.get(0).getPosicion().x-(float)0.1,aneis.get(0).getPosicion().y);
-            for (int i = aneis.size-1; i >= 0; i--) {
-                if (i==0){
-                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
-                    Vector2 nuevo = new Vector2(pos.x-(float)0.5,pos.y);
-                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
+                //aneis.get(0).setPosicion(aneis.get(0).getPosicion().x-(float)0.1,aneis.get(0).getPosicion().y);
+                for (int i = aneis.size - 1; i >= 0; i--) {
+                    if (i == 0) {
+                        Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                        Vector2 nuevo = new Vector2(pos.x - 5, pos.y);
+                        aneis.get(0).setPosicion(nuevo.x, nuevo.y);
 
-                }
-                else {
-                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
-                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
-                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
-                    ultimo = penultimo;
+                    } else {
+                        Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                        Vector2 penultimo = new Vector2(aneis.get(i - 1).getPosicion());
+                        aneis.get(i).setPosicion(penultimo.x, penultimo.y);
+                        ultimo = penultimo;
+                    }
                 }
             }
 
-        }
-        if (dereita){
-            //snake.add(new Vector2(snake.get(snake.size - 1).x + 1, snake.get(snake.size - 1).y));
-            for (int i = aneis.size-1; i >= 0; i--) {
-                if (i==0){
-                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
-                    Vector2 nuevo = new Vector2(pos.x+(float)0.5,pos.y);
-                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
-                }
-                else {
-                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
-                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
-                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
-                    ultimo = penultimo;
-                }
-            }
-        }
-        if (arriba){
-            //snake.add(new Vector2(snake.get(snake.size - 1).x, snake.get(snake.size - 1).y + 1));
-            for (int i = aneis.size-1; i >= 0; i--) {
-                if (i==0){
-                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
-                    Vector2 nuevo = new Vector2(pos.x,pos.y+(float)0.5);
-                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
-                }
-                else {
-                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
-                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
-                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
-                    ultimo = penultimo;
-                }
-            }
-        }
-        if (abaixo){
-            //snake.add(new Vector2(snake.get(snake.size - 1).x, snake.get(snake.size - 1).y - 1));
-            for (int i = aneis.size-1; i >= 0; i--) {
-                if (i==0){
-                    Vector2 pos = new Vector2(aneis.get(0).getPosicion());
-                    Vector2 nuevo = new Vector2(pos.x,pos.y-(float)0.5);
-                    aneis.get(0).setPosicion(nuevo.x,nuevo.y);
-                }
-                else {
-                    Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
-                    Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
-                    aneis.get(i).setPosicion(penultimo.x,penultimo.y);
-                    ultimo = penultimo;
-                }
-            }
-        }
+           //anadirAnel(getAneis().get(0).getPosicion().x-10,getAneis().get(0).getPosicion().y);
 
+        }
+        if (ControladorXogo.DEREITA){
+            if (direccionMovimiento || ControladorXogo.DEREITA){
+                //System.out.println("dereita");
+                //snake.add(new Vector2(snake.get(snake.size - 1).x + 1, snake.get(snake.size - 1).y));
+                for (int i = aneis.size-1; i >= 0; i--) {
+                    if (i==0){
+                        Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                        Vector2 nuevo = new Vector2(pos.x+5,pos.y);
+                        aneis.get(0).setPosicion(nuevo.x,nuevo.y);
+                    }
+                    else {
+                        Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                        Vector2 penultimo = new Vector2(aneis.get(i-1).getPosicion());
+                        aneis.get(i).setPosicion(penultimo.x,penultimo.y);
+                        ultimo = penultimo;
+                    }
+                }
+            }
+            //anadirAnel(getAneis().get(0).getPosicion().x+10,getAneis().get(0).getPosicion().y);
+           // System.out.println("Pos: " +getAneis().get(0).getPosicion().x);
+        }
+        if (ControladorXogo.ARRIBA){
+            if (!direccionMovimiento || ControladorXogo.ARRIBA) {
+                //System.out.println("arriba");
+                //snake.add(new Vector2(snake.get(snake.size - 1).x, snake.get(snake.size - 1).y + 1));
+                for (int i = aneis.size - 1; i >= 0; i--) {
+                    if (i == 0) {
+                        Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                        Vector2 nuevo = new Vector2(pos.x, pos.y + 5);
+                        aneis.get(0).setPosicion(nuevo.x, nuevo.y);
+                    } else {
+                        Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                        Vector2 penultimo = new Vector2(aneis.get(i - 1).getPosicion());
+                        aneis.get(i).setPosicion(penultimo.x, penultimo.y);
+                        ultimo = penultimo;
+                    }
+                }
+            }
+
+            //anadirAnel(getAneis().get(0).getPosicion().x,getAneis().get(0).getPosicion().y+10);
+        }
+        if (ControladorXogo.ABAIXO){
+            if (!direccionMovimiento || ControladorXogo.ABAIXO) {
+                //System.out.println("abaixo");
+                //snake.add(new Vector2(snake.get(snake.size - 1).x, snake.get(snake.size - 1).y - 1));
+                for (int i = aneis.size - 1; i >= 0; i--) {
+                    if (i == 0) {
+                        Vector2 pos = new Vector2(aneis.get(0).getPosicion());
+                        Vector2 nuevo = new Vector2(pos.x, pos.y - 5);
+                        aneis.get(0).setPosicion(nuevo.x, nuevo.y);
+                    } else {
+                        Vector2 ultimo = new Vector2(aneis.get(i).getPosicion());
+                        Vector2 penultimo = new Vector2(aneis.get(i - 1).getPosicion());
+                        aneis.get(i).setPosicion(penultimo.x, penultimo.y);
+                        ultimo = penultimo;
+                    }
+                }
+            }
+            //anadirAnel(getAneis().get(0).getPosicion().x,getAneis().get(0).getPosicion().y-10);
+        }
+        if (ControladorXogo.borrar){
+            //aneis.removeIndex(aneis.size-1);
+
+        }
 
     }
 

@@ -24,6 +24,11 @@ public abstract class Personaxe {
         rectangulo = new Rectangle(posicion.x,posicion.y, tamano.x,tamano.y);
     }
 
+    protected Personaxe(Vector2 posicion) {
+        this.posicion = posicion;
+        this.tamano = new Vector2(5,5);
+    }
+
     /**
      * Instancia unha personaxe
      *
