@@ -138,12 +138,14 @@ public class ControladorXogo {
                 //serpiente.anadirAnel(new Anel(serpiente.getAneis().get(serpiente.getAneis().size).getPosicion(),));
                 //serpiente.iniciarAneis();
                 //meuMundo.getManzana().
-                float posicionx = MathUtils.random(0, 25);
-                float posiciony = MathUtils.random(0, 25);
-                manzana.setPosicion(posicionx * 13, posiciony * 13);
+                float posicionx = MathUtils.random(15, 51);
+                float posiciony = MathUtils.random(15, 51);
+                manzana.setPosicion(posicionx*5, posiciony*5);
+                System.out.println("pos x:"+posicionx+"pos y:"+posiciony);
                 puntuacion += 1;
-                borrar = false;
                 System.out.println(puntuacion);
+                serpiente.anadirAnel(serpiente.getAneis().get(serpiente.getAneis().size-1).getPosicion().x,
+                        serpiente.getAneis().get(serpiente.getAneis().size-1).getPosicion().y);
 
             }
        // }

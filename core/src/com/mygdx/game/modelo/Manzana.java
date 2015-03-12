@@ -9,8 +9,8 @@ public class Manzana{
     protected Vector2 posicion;
     protected Vector2 tamano;
     private Rectangle rectangulo;
-    private float altura = 10;
-    private float anchura = 10;
+    private float altura = 5;
+    private float anchura = 5;
     public float posicionx;
     public float posiciony;
 
@@ -77,9 +77,9 @@ public class Manzana{
 
     public void nuevaPosicion(){
 
-        posicionx = MathUtils.random(0,25);
-        posiciony = MathUtils.random(0,25);
-        Manzana manzana = new Manzana(new Vector2(posicionx*13,posiciony*13));
+        posicionx = MathUtils.random(10,51);
+        posiciony = MathUtils.random(10,51);
+        Manzana manzana = new Manzana(new Vector2(posicionx,posiciony));
         //manzana.setPosicion(posicionx*13,posiciony*13);
     }
 
