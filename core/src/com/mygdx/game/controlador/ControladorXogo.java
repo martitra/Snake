@@ -25,6 +25,7 @@ public class ControladorXogo {
     public static boolean ARRIBA;
     public static boolean ABAIXO;
     public int puntuacion;
+    public static int MAXTIME = 5;
 
     public enum Keys {
         ESQUERDA, DEREITA, ARRIBA, ABAIXO
@@ -89,15 +90,7 @@ public class ControladorXogo {
         puntuacion = 0;
     }
 
-    private void controladorManzana(){
-        //manzana.nuevaPosicion();
-        //manzana.update();
-    }
-
     private void controladorSerpiente(float delta){
-
-
-        //for (int i=0;i<serpiente.getAneis().size;i++) {
         //System.out.println(serpiente.getAneis().size);
             //serpiente.update(delta);
             // Impedir que se mova fora dos límites da pantalla
@@ -126,12 +119,12 @@ public class ControladorXogo {
                 }
             }
 
-
         /*
-            Cando o alien chega a nave, sálvase e inicializamos
+            Cando a maza se come
         */
-
-            if (Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(), meuMundo.getManzana().getRectangulo())) {
+        for (int i=0;i<serpiente.getAneis().size;i++) {
+            if (Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(), meuMundo.getManzana().getRectangulo()) ||
+                    Intersector.overlaps(serpiente.getAneis().get(i).getRectangulo(),meuMundo.getManzana().getRectangulo())){
                 //|| Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(), serpiente.getAneis().get(i).getRectangulo())) {
                 //serpiente.setNumVidas(Serpiente.TIPOS_VIDA.SALVADO);
                 //Audio.transporter_sfx.play();
@@ -148,21 +141,25 @@ public class ControladorXogo {
                         serpiente.getAneis().get(serpiente.getAneis().size-1).getPosicion().y);
 
             }
-       // }
-        for (int i=0;i<serpiente.getAneis().size;i++) {
-            //aquí para que no se toque a sí misma
         }
-
-
-
-
+        for (int i=1;i<serpiente.getAneis().size;i++) {
+            //aquí para que no se toque a sí misma
+            if (Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(),serpiente.getAneis().get(i).getRectangulo())){
+                serpiente.iniciarAneis();
+            }
+        }
     }
 
     public void update(float delta){
-        controladorManzana();
         controladorSerpiente(delta);
         procesarEntradas();
-        serpiente.update(delta);
+        System.out.println(MAXTIME);
+        if (MAXTIME==5){
+            serpiente.update(delta);
+            MAXTIME = 0;
+        }
+        MAXTIME++;
+
 
     }
 }
