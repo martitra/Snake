@@ -17,10 +17,10 @@ public class MeuXogoGame extends Game {
         AssetsXogo.cargarTexturas();
        // Audio.inicializarMusica();
 
-		pantallaXogo = new PantallaXogo(this);//para eliminar pantalla al cerrarla y no hide sino dispose
-		setScreen(pantallaXogo);
-        //pantallaPresentacion = new PantallaPresentacion(this);
-        //setScreen(pantallaPresentacion);
+		//pantallaXogo = new PantallaXogo(this);//para eliminar pantalla al cerrarla y no hide sino dispose
+		//setScreen(pantallaXogo);
+        pantallaPresentacion = new PantallaPresentacion(this);
+        setScreen(pantallaPresentacion);
 	}
 
 	/* (non-Javadoc)
@@ -30,8 +30,8 @@ public class MeuXogoGame extends Game {
 	public void dispose() {//libera memoria, liberar recursos de memoria
 		// TODO Auto-generated method stub
 		super.dispose();
-		pantallaXogo.dispose();//facermos esto para no hide sino dispose
-        //pantallaPresentacion.dispose();
+		//pantallaXogo.dispose();//facermos esto para no hide sino dispose
+        pantallaPresentacion.dispose();
 
         AssetsXogo.liberarTexturas();
         //Audio.dispose();

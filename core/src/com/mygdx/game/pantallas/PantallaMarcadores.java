@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.controlador.ControladorXogo;
 import com.mygdx.game.dam201.MeuXogoGame;
 import com.mygdx.game.modelo.Serpiente;
 import com.mygdx.game.modelo.Mundo;
@@ -21,10 +22,9 @@ public class PantallaMarcadores implements Screen, InputProcessor {
     private SpriteBatch spriteBatch;
     private static Texture fondo;
     private BitmapFont bitMapFont;
-    private String vidasSalvadas = "Vidas Salvadas ";
-    private String vidasMortas;
+    private String mazas = "Mazas ";
     private Preferences preferences;
-    private Integer numVidasSalvadas = 0;
+    private Integer puntuacion = 0;
 
     public PantallaMarcadores(){
         bitMapFont = new BitmapFont();
@@ -33,7 +33,7 @@ public class PantallaMarcadores implements Screen, InputProcessor {
         fondo = new Texture(Gdx.files.internal("Texturas/pantallapause.jpg"));
         preferences = Gdx.app.getPreferences("marcadores");
         //almacenadas, as gardadas en preferencias(numvidassalvadas)
-        numVidasSalvadas = preferences.getInteger("vidas_salvadas", 0);
+        puntuacion = preferences.getInteger("manzanas_comidas", 0);
     }
 
     /*
@@ -43,7 +43,7 @@ public class PantallaMarcadores implements Screen, InputProcessor {
         this();
         this.meuXogoGame = meuXogoGame;
 
-        vidasSalvadas = vidasSalvadas.concat(String.valueOf(numVidasSalvadas));
+        mazas = mazas.concat(String.valueOf(puntuacion));
         /*
         si vimos de pantallaXogo
         guardar a mellor punci&oacute;n e mostrar a tua puntuaci&oacute;n e as demais
@@ -60,15 +60,15 @@ public class PantallaMarcadores implements Screen, InputProcessor {
         this.meuXogoGame = meuXogoGame;
         this.pantallaXogo = pantallaXogo;
 
-        Serpiente serpiente = pantallaXogo.getMundo().getSerpiente();
-        //Integer numvidasSalvadasXogo = serpiente.getNumVidasSalvadas();
-        //if (numvidasSalvadasXogo > numVidasSalvadas){
-        //    numVidasSalvadas = numvidasSalvadasXogo;
-        //    preferences.putInteger("vidas_salvadas",numVidasSalvadas);
-        //    preferences.flush();//para actualizar
-        //   vidasSalvadas = vidasSalvadas.concat("Nuevo Record!! ");
-        //}
-        vidasSalvadas = vidasSalvadas.concat(String.valueOf(numVidasSalvadas));
+        //Serpiente serpiente = pantallaXogo.getMundo().getSerpiente();
+        Integer mazasComidas = ControladorXogo.puntuacion;
+        if (mazasComidas > puntuacion){
+            mazasComidas =puntuacion ;
+            preferences.putInteger("mazas_comidas",puntuacion);
+            preferences.flush();//para actualizar
+            mazas = mazas.concat("Nuevo Record!! ");
+        }
+        mazas = mazas.concat(String.valueOf(puntuacion));
         //vidasSalvadas = "Vidas Salvadas: "+String.valueOf(alien.getNumVidasSalvadas());
         //vidasMortas = "Vidas Mortas: "+String.valueOf(alien.getNumVidasMortas());
     }
@@ -130,7 +130,7 @@ public class PantallaMarcadores implements Screen, InputProcessor {
         spriteBatch.draw(fondo,0,0, Mundo.TAMANO_MUNDO_ANCHO,Mundo.TAMANO_MUNDO_ALTO);
 
         bitMapFont.draw(spriteBatch,"MARCADORES", 50, 450);
-        bitMapFont.draw(spriteBatch, vidasSalvadas, 50, 350);
+        bitMapFont.draw(spriteBatch, mazas, 50, 350);
         //bitMapFont.draw(spriteBatch, vidasMortas, 50, 350);
 
         spriteBatch.end();

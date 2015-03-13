@@ -58,9 +58,9 @@ public class PantallaXogo implements Screen, InputProcessor {
 		rendererXogo.render(delta);
         controladorXogo.update(delta);
 
-        //if (meuMundo.getSerpiente().getNumVidas().size >= 15) {
-        //    finXogo = true;
-        //}
+        if (controladorXogo.FINXOGO) {
+            finXogo = true;
+        }
 
         if (pause) {
             meuXogoGame.setScreen(new PantallaPause(meuXogoGame,this));

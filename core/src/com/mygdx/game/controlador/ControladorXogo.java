@@ -17,15 +17,13 @@ public class ControladorXogo {
     private Mundo meuMundo;
     private Serpiente serpiente;
     private Manzana manzana;
-    public static boolean borrar = true;
-    private Anel anel;
-    float delay = 1; // seconds
     public static boolean ESQUERDA;
     public static boolean DEREITA=true;
     public static boolean ARRIBA;
     public static boolean ABAIXO;
-    public int puntuacion;
+    public static int puntuacion;
     public static int MAXTIME = 5;
+    public static boolean FINXOGO = false;
 
     public enum Keys {
         ESQUERDA, DEREITA, ARRIBA, ABAIXO
@@ -98,11 +96,13 @@ public class ControladorXogo {
             if (serpiente.getAneis().get(0).getPosicion().x <= 0 ||
                     serpiente.getAneis().get(0).getPosicion().y <= 0) {
                 //serpiente.getAneis().get(0).setPosicion(0, serpiente.getPosicion().y);
-                serpiente.iniciarAneis();
+                //serpiente.iniciarAneis();
+                FINXOGO = true;
                 //morre a serpiente
             } else {
                 if (serpiente.getAneis().get(0).getPosicion().x >= Mundo.TAMANO_MUNDO_ANCHO) {
-                    serpiente.iniciarAneis();
+                    //serpiente.iniciarAneis();
+                    FINXOGO = true;
                 }
             }
 
@@ -110,12 +110,15 @@ public class ControladorXogo {
             if (serpiente.getAneis().get(0).getPosicion().y <= Controis.FONDO_NEGRO.height) {
                 //serpiente.getAneis().get(i).setPosicion(serpiente.getAneis().get(i).getPosicion().x,
                 //        Controis.FONDO_NEGRO.height);
-                serpiente.iniciarAneis();
+                //serpiente.iniciarAneis();
+                FINXOGO = true;
             } else {
                 if (serpiente.getAneis().get(0).getPosicion().y >= Mundo.TAMANO_MUNDO_ALTO) {
                     //serpiente.getAneis().get(i).setPosicion(serpiente.getAneis().get(i).getPosicion().x,
                     //        Mundo.TAMANO_MUNDO_ALTO - serpiente.getAneis().get(i).getTamano().y);
-                    serpiente.iniciarAneis();
+                    //serpiente.iniciarAneis();
+                    FINXOGO = true;
+
                 }
             }
 
@@ -145,7 +148,8 @@ public class ControladorXogo {
         for (int i=1;i<serpiente.getAneis().size;i++) {
             //aquí para que no se toque a sí misma
             if (Intersector.overlaps(serpiente.getAneis().get(0).getRectangulo(),serpiente.getAneis().get(i).getRectangulo())){
-                serpiente.iniciarAneis();
+                //serpiente.iniciarAneis();
+                FINXOGO = true;
             }
         }
     }

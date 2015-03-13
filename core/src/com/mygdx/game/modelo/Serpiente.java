@@ -342,11 +342,6 @@ public class Serpiente {
                     }
                 }
             }
-            //anadirAnel(getAneis().get(0).getPosicion().x,getAneis().get(0).getPosicion().y-10);
-        }
-        if (ControladorXogo.borrar){
-            //aneis.removeIndex(aneis.size-1);
-
         }
 
     }
